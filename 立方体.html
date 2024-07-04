@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cubephotos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            margin:10vw  auto 0 auto;
+            position: relative;
+            /* 给父盒子加，子元素出于什么空间状态：平面or立体空间 */
+            transform-style: preserve-3d;
+            width: 120px;
+            height: 120px;
+            transform: rotate3d(45deg,45deg,45deg);
+            /* perspective: 1000px; */
+            animation: change  5s  infinite linear;
+        }
+        .box:hover {
+            animation-play-state: paused;
+        }
+        .box div {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .box .front {
+            transform: translateZ(60px);
+        }
+        .box .back {
+            transform: translateZ(-60px);
+        }
+        .box .left {
+            transform:translateX(-60px) rotateY(-90deg) ;
+            
+        }
+        .box .right {
+            transform:translateX(60px) rotateY(90deg) ;
+            
+        }
+        .box .top {
+            transform: translateY(-60px) rotateX(90deg);
+        }
+        .box .bottom {
+            transform: translateY(60px) rotateX(-90deg); 
+        }
+        .box img {
+            width: 100%;
+            /* 对图片进行剪切保持原始比例 */
+            object-fit: cover;
+        }
+        @keyframes change {
+            0% {
+                transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front"><img src="./素材/3.jpg" alt=""></div>
+        <div class="back"><img src="./素材/4.jpg" alt=""></div>
+        <div class="left"><img src="./素材/6.jpg" alt=""></div>
+        <div class="right"><img src="./素材/7.jpg" alt=""></div>
+        <div class="top"><img src="./素材/8.jpg" alt=""></div>
+        <div class="bottom"><img src="./素材/9.jpg" alt=""></div>
+    </div>
+</body>
+</html>
